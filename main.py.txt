@@ -1,0 +1,14 @@
+from scraper import get_quotes
+
+def start():
+    print("--- Web Scraper Shuru Ho Raha Hai ---")
+    data = get_quotes()
+    if data:
+        for item in data[:5]:
+            print(f"\nQuote: {item['text']}")
+            print(f"Author: {item['author']}")
+    else:
+        print("Data nahi mil paya.")
+
+if __name__ == "__main__":
+    start()
