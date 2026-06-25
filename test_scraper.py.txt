@@ -1,0 +1,20 @@
+from scraper import get_quotes
+
+def test_get_quotes_returns_list():
+    """Test 1: Check karta hai ki data list format mein hai ya nahi."""
+    data = get_quotes()
+    assert isinstance(data, list)
+
+def test_get_quotes_has_data():
+    """Test 2: Check karta hai ki data khali toh nahi hai."""
+    data = get_quotes()
+    if data:
+        assert len(data) > 0
+
+def test_data_structure():
+    """Test 3: Check karta hai ki text aur author dono majood hain."""
+    data = get_quotes()
+    if data:
+        first_item = data[0]
+        assert "text" in first_item
+        assert "author" in first_item

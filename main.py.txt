@@ -1,6 +1,7 @@
 from scraper import get_quotes
 
 def start():
+    """Program shuru karne ka main function."""
     print("--- Web Scraper Shuru Ho Raha Hai ---")
     data = get_quotes()
     if data:

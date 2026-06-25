@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 def get_quotes():
+    """Internet se quotes nikalne ka function."""
     url = "https://quotes.toscrape.com/"
     try:
         response = requests.get(url, timeout=10)
@@ -10,9 +11,13 @@ def get_quotes():
         quotes = soup.find_all('div', class_='quote')
         result = []
         for q in quotes:
-            text = q.find('span', class_='text').text
-            author = q.find('small', class_='author').text
-            result.append({"text": text, "author": author})
+            text_element = q.find('span', class_='text')
+            author_element = q.find('small', class_='author')
+            if text_element and author_element:
+                result.append({
+                    "text": text_element.text, 
+                    "author": author_element.text
+                })
         return result
     except Exception as e:
         print(f"Kuch gadbad hui: {e}")
